@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState, useRef, useEffect } from "react";
-import ReactFlow, { Background, Controls, Handle, Position, addEdge, useNodesState, useEdgesState, MarkerType, ConnectionMode, updateEdge, NodeResizer } from "reactflow";
+import ReactFlow, { Background, Controls, Handle, Position, addEdge, useNodesState, useEdgesState, MarkerType, ConnectionMode, updateEdge, NodeResizer, useOnSelectionChange, ReactFlowProvider } from "reactflow";
 import "reactflow/dist/style.css";
 import { Play, Pause, Database, Cable, Server, MessageSquare, Network, Send, Settings, Zap, Code2, BadgeCheck, Users, Clock3 } from "lucide-react";
 import arquitecturaData from './arquitectura.json';
@@ -173,7 +173,70 @@ function ResizableSquareNode({ data }: { data?: any }) {
   );
 }
 
-export default function ArquitecturaReactFlow() {
+function Info() {
+  return (
+    <>
+      <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: 12, fontSize: 12, color: "#475569" }}>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
+          <div style={{ fontWeight: 700, color: "#0f172a" }}>Relays de Outbox</div>
+          <ul style={{ paddingLeft: 18, marginTop: 6 }}>
+            <li>Relay BD CONVERSATION: en <b>Ticket Manager</b></li>
+            <li>Relay BD FLOW: en <b>MS Flow</b></li>
+          </ul>
+        </div>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
+          <div style={{ fontWeight: 700, color: "#0f172a" }}>Bases de datos</div>
+          <ul style={{ paddingLeft: 18, marginTop: 6 }}>
+            <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(14,165,233,.8)', borderRadius: 2, marginRight: 6 }} />
+              CONVERSATION (Postgres)</li>
+            <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(100,116,139,.8)', borderRadius: 2, marginRight: 6 }} />
+              CONFIG (Postgres)</li>
+            <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(168,85,247,.8)', borderRadius: 2, marginRight: 6 }} />
+              FLOW (Postgres)</li>
+            <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(20,184,166,.8)', borderRadius: 2, marginRight: 6 }} />
+              READ MODEL (Postgres)</li>
+            <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(239,68,68,.8)', borderRadius: 2, marginRight: 6 }} />
+              REDIS</li>
+          </ul>
+        </div>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
+          <div style={{ fontWeight: 700, color: "#0f172a" }}>Tecnologías</div>
+          <ul style={{ paddingLeft: 18, marginTop: 6 }}>
+            <li>MS Incoming: .NET 10</li>
+            <li>MS Flow: .NET 10</li>
+            <li>MS Hook IN: .NET 10</li>
+            <li>MS Outgoing: .NET 10</li>
+            <li>Projector: .NET 10</li>
+            <li>Ticket Manager: .NET 10</li>
+            <li>BFF: Node 22 + NestJS</li>
+            <li>Cliente Web: React</li>
+            <li>DBMS: Postgres</li>
+          </ul>
+        </div>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
+          <div style={{ fontWeight: 700, color: "#0f172a" }}>Topics Kafka</div>
+          <ul style={{ paddingLeft: 18, marginTop: 6 }}>
+            <li><b>message_received</b>: Producer = MS Hook IN · Consumer = MS Incoming · <b>partitions</b> = 60</li>
+            <li><b>events_denat</b>: Producers = Incoming, Flow, Ticket Manager, Outgoing · Consumer = Projector · <b>partitions</b> = 60</li>
+          </ul>
+        </div>
+      </div>
+      <div style={{ marginTop: 16, fontSize: 12, color: "#475569" }}>
+        <span style={{ fontFamily: "monospace" }}>MS</span> = microservicio · <span style={{ fontFamily: "monospace" }}>gRPC</span> de baja latencia · <span style={{ fontFamily: "monospace" }}>Channel</span> para ejecución BG · <span style={{ fontFamily: "monospace" }}>DBMS</span>: Postgres · <span style={{ fontFamily: "monospace" }}>BFF</span> en Node 22/NestJS → <span style={{ fontFamily: "monospace" }}>React</span> Web
+      </div>
+    </>
+  )
+}
+
+export default function Main() {
+  return (
+    <ReactFlowProvider>
+      <ArquitecturaReactFlow />
+    </ReactFlowProvider>
+  );
+}
+
+function ArquitecturaReactFlow() {
   const [animated, setAnimated] = useState(true);
   const [showDebug, setShowDebug] = useState(false); // Ocultar sanity checks por defecto
 
@@ -185,6 +248,16 @@ export default function ArquitecturaReactFlow() {
   })), [animated]);
 
 
+  const [selection, setSelection] = useState<{ nodes: string[]; edges: string[] }>({ nodes: [], edges: [] });
+
+  useOnSelectionChange({
+    onChange: ({ nodes, edges }) => {
+      setSelection({
+        nodes: nodes.map((n) => n.id),
+        edges: edges.map((e) => e.id),
+      });
+    },
+  });
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -264,7 +337,31 @@ export default function ArquitecturaReactFlow() {
     ]);
   }, [setNodes, onTextChange]);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Delete" && e.key !== "Backspace") return;
+
+      // Si estás escribiendo en un input/textarea/contentEditable, NO borres
+      const el = document.activeElement as HTMLElement | null;
+      const isTyping =
+        !!el &&
+        (el.tagName === "INPUT" ||
+          el.tagName === "TEXTAREA" ||
+          el.isContentEditable);
+      if (isTyping) return;
+
+      // Borra lo seleccionado
+      setNodes((ns) => ns.filter((n) => !selection.nodes.includes(n.id)));
+      setEdges((es) => es.filter((ed) => !selection.edges.includes(ed.id)));
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selection, setNodes, setEdges]);
+
+
   return (
+
     <div style={{ width: "100%", minHeight: "100vh", background: "linear-gradient(180deg, #e2e8f0, #ffffff)", color: "#0f172a", padding: 0, margin: 0, boxSizing: "border-box" }}>
       <GlobalStyles />
       <div style={{ width: "95%", padding: "16px", margin: "0 auto", boxSizing: "border-box" }}>
@@ -300,55 +397,9 @@ export default function ArquitecturaReactFlow() {
             )}
           </div>
         )}
-        <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: 12, fontSize: 12, color: "#475569" }}>
-          <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
-            <div style={{ fontWeight: 700, color: "#0f172a" }}>Relays de Outbox</div>
-            <ul style={{ paddingLeft: 18, marginTop: 6 }}>
-              <li>Relay BD CONVERSATION: en <b>Ticket Manager</b></li>
-              <li>Relay BD FLOW: en <b>MS Flow</b></li>
-            </ul>
-          </div>
-          <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
-            <div style={{ fontWeight: 700, color: "#0f172a" }}>Bases de datos</div>
-            <ul style={{ paddingLeft: 18, marginTop: 6 }}>
-              <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(14,165,233,.8)', borderRadius: 2, marginRight: 6 }} />
-                CONVERSATION (Postgres)</li>
-              <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(100,116,139,.8)', borderRadius: 2, marginRight: 6 }} />
-                CONFIG (Postgres)</li>
-              <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(168,85,247,.8)', borderRadius: 2, marginRight: 6 }} />
-                FLOW (Postgres)</li>
-              <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(20,184,166,.8)', borderRadius: 2, marginRight: 6 }} />
-                READ MODEL (Postgres)</li>
-              <li><span style={{ display: 'inline-block', width: 10, height: 10, background: 'rgba(239,68,68,.8)', borderRadius: 2, marginRight: 6 }} />
-                REDIS</li>
-            </ul>
-          </div>
-          <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
-            <div style={{ fontWeight: 700, color: "#0f172a" }}>Tecnologías</div>
-            <ul style={{ paddingLeft: 18, marginTop: 6 }}>
-              <li>MS Incoming: .NET 10</li>
-              <li>MS Flow: .NET 10</li>
-              <li>MS Hook IN: .NET 10</li>
-              <li>MS Outgoing: .NET 10</li>
-              <li>Projector: .NET 10</li>
-              <li>Ticket Manager: .NET 10</li>
-              <li>BFF: Node 22 + NestJS</li>
-              <li>Cliente Web: React</li>
-              <li>DBMS: Postgres</li>
-            </ul>
-          </div>
-          <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
-            <div style={{ fontWeight: 700, color: "#0f172a" }}>Topics Kafka</div>
-            <ul style={{ paddingLeft: 18, marginTop: 6 }}>
-              <li><b>message_received</b>: Producer = MS Hook IN · Consumer = MS Incoming · <b>partitions</b> = 60</li>
-              <li><b>events_denat</b>: Producers = Incoming, Flow, Ticket Manager, Outgoing · Consumer = Projector · <b>partitions</b> = 60</li>
-            </ul>
-          </div>
-        </div>
-        <div style={{ marginTop: 16, fontSize: 12, color: "#475569" }}>
-          <span style={{ fontFamily: "monospace" }}>MS</span> = microservicio · <span style={{ fontFamily: "monospace" }}>gRPC</span> de baja latencia · <span style={{ fontFamily: "monospace" }}>Channel</span> para ejecución BG · <span style={{ fontFamily: "monospace" }}>DBMS</span>: Postgres · <span style={{ fontFamily: "monospace" }}>BFF</span> en Node 22/NestJS → <span style={{ fontFamily: "monospace" }}>React</span> Web
-        </div>
+        <Info />
       </div>
     </div>
+
   );
 }
