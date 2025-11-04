@@ -45,8 +45,8 @@
       "id": "kafka",
       "type": "box",
       "position": {
-        "x": 442.8188675885069,
-        "y": 296.4555745597587
+        "x": 471.7356553282008,
+        "y": 286.24964947516094
       },
       "data": {
         "title": "Kafka",
@@ -75,6 +75,10 @@
           {
             "title": "events_denat",
             "subtitle": "Incoming / Flow / TicketMgr / Outgoing → Projector | partitions: 60"
+          },
+          {
+            "title": "event_mail_received",
+            "subtitle": "Mail Events → Incoming Mail | partitions: 60"
           }
         ]
       }
@@ -83,8 +87,8 @@
       "id": "incoming",
       "type": "box",
       "position": {
-        "x": 200.51272730462682,
-        "y": 570.9707062127916
+        "x": 186.90482719182972,
+        "y": 601.5884814665851
       },
       "data": {
         "title": "MS Incoming",
@@ -118,8 +122,8 @@
       "id": "flow",
       "type": "box",
       "position": {
-        "x": 746.1554321137238,
-        "y": 573.0614744583373
+        "x": 820.998882734108,
+        "y": 637.6989999941236
       },
       "data": {
         "title": "MS Flow",
@@ -199,8 +203,8 @@
       "id": "projector",
       "type": "box",
       "position": {
-        "x": 1014.929787264897,
-        "y": 145.42663360125687
+        "x": 1091.4742253993807,
+        "y": 128.4167584602605
       },
       "data": {
         "title": "Projector",
@@ -229,8 +233,8 @@
       "id": "readmodel",
       "type": "box",
       "position": {
-        "x": 1199.3556507471415,
-        "y": 342.4251149775969
+        "x": 1575.2738913631617,
+        "y": 194.4392012509283
       },
       "data": {
         "title": "BD Read Model",
@@ -259,8 +263,8 @@
       "id": "bff",
       "type": "box",
       "position": {
-        "x": 1584.1914259748664,
-        "y": 436.91079523758157
+        "x": 1948.2027539921892,
+        "y": 630.8233718449404
       },
       "data": {
         "title": "BFF (API)",
@@ -294,8 +298,8 @@
       "id": "web",
       "type": "box",
       "position": {
-        "x": 1656.7880941561941,
-        "y": 245.3782541125073
+        "x": 1957.8628841518303,
+        "y": 400.16811789557454
       },
       "data": {
         "title": "Cliente Web",
@@ -324,8 +328,8 @@
       "id": "closeticket",
       "type": "box",
       "position": {
-        "x": 1198.566638160362,
-        "y": 524.9493138698945
+        "x": 1222.3804633577568,
+        "y": 376.96340014322584
       },
       "data": {
         "title": "MS Ticket Manager",
@@ -368,6 +372,83 @@
           {
             "title": "Outbox Relay",
             "subtitle": "BD CONVERSATION → produce events_denat"
+          }
+        ]
+      }
+    },
+    {
+      "id": "incomingmail",
+      "type": "box",
+      "position": {
+        "x": 400.3429383361457,
+        "y": 1181.5880110507935
+      },
+      "data": {
+        "title": "MS Incoming Mail",
+        "subtitle": "Consumer event_mail_received + Enrich",
+        "dbs": [
+          "BD MAIL (Postgres)",
+          "REDIS"
+        ],
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "incoming"
+      }
+    },
+    {
+      "id": "ticketmailmanager",
+      "type": "box",
+      "position": {
+        "x": 1276.6646022138586,
+        "y": 1108.731340653878
+      },
+      "data": {
+        "title": "MS Ticket Mail Manager",
+        "subtitle": "Cierre y asignación de tickets de mail",
+        "dbs": [
+          "BD MAIL (Postgres)"
+        ],
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "close",
+        "sections": [
+          {
+            "title": "Cierre automático",
+            "subtitle": "BG: cierre de tickets por tiempo"
+          },
+          {
+            "title": "Asignación",
+            "subtitle": "BG: asignación de tickets de mail"
           }
         ]
       }
@@ -417,29 +498,6 @@
       "style": {
         "strokeWidth": 2.2,
         "stroke": "#ef4444"
-      },
-      "updatable": true
-    },
-    {
-      "id": "e11",
-      "source": "bff",
-      "sourceHandle": "out-left",
-      "target": "readmodel",
-      "targetHandle": "in-right",
-      "label": "SQL (read)",
-      "labelStyle": {
-        "fill": "#14b8a6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#14b8a6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#14b8a6"
       },
       "updatable": true
     },
@@ -787,6 +845,121 @@
         "stroke": "#10b981"
       },
       "updatable": true
+    },
+    {
+      "id": "reactflow__edge-kafkaout-bottom-incomingmailin-top",
+      "source": "kafka",
+      "sourceHandle": "out-bottom",
+      "target": "incomingmail",
+      "targetHandle": "in-top",
+      "label": "consumer (mail)",
+      "labelStyle": {
+        "fill": "#ef4444",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#ef4444"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#ef4444"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-ticketmailmanagerout-left-outgoingin-right",
+      "source": "ticketmailmanager",
+      "sourceHandle": "out-left",
+      "target": "outgoing",
+      "targetHandle": "in-right",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-bffout-left-readmodelin-bottom",
+      "source": "bff",
+      "sourceHandle": "out-left",
+      "target": "readmodel",
+      "targetHandle": "in-bottom",
+      "label": "SQL (read)",
+      "labelStyle": {
+        "fill": "#14b8a6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#14b8a6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#14b8a6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-incomingmailout-left-outgoingin-bottom",
+      "source": "incomingmail",
+      "sourceHandle": "out-left",
+      "target": "outgoing",
+      "targetHandle": "in-bottom",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-bffout-bottom-ticketmailmanagerin-top",
+      "source": "bff",
+      "sourceHandle": "out-bottom",
+      "target": "ticketmailmanager",
+      "targetHandle": "in-top",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
     }
   ]
-} 
+}
