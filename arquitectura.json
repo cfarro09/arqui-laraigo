@@ -1,0 +1,792 @@
+{
+  "nodes": [
+    {
+      "id": "channels",
+      "type": "channels",
+      "position": {
+        "x": -147.5089009902115,
+        "y": 133.2701708588911
+      },
+      "data": {
+        "theme": "channels"
+      }
+    },
+    {
+      "id": "hook",
+      "type": "box",
+      "position": {
+        "x": 300,
+        "y": 60
+      },
+      "data": {
+        "title": "MS Hook IN",
+        "subtitle": "Normaliza eventos",
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "hook"
+      }
+    },
+    {
+      "id": "kafka",
+      "type": "box",
+      "position": {
+        "x": 442.8188675885069,
+        "y": 296.4555745597587
+      },
+      "data": {
+        "title": "Kafka",
+        "subtitle": "Topics consolidados",
+        "cardWidth": 360,
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "kafka",
+        "sections": [
+          {
+            "title": "message_received",
+            "subtitle": "Hook IN → Incoming | partitions: 60"
+          },
+          {
+            "title": "events_denat",
+            "subtitle": "Incoming / Flow / TicketMgr / Outgoing → Projector | partitions: 60"
+          }
+        ]
+      }
+    },
+    {
+      "id": "incoming",
+      "type": "box",
+      "position": {
+        "x": 200.51272730462682,
+        "y": 570.9707062127916
+      },
+      "data": {
+        "title": "MS Incoming",
+        "subtitle": "Consumer + Enrich (Outbox CONVERSATION)",
+        "dbs": [
+          "BD CONVERSATION (Postgres)",
+          "BD CONFIG (Postgres)",
+          "REDIS"
+        ],
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "incoming"
+      }
+    },
+    {
+      "id": "flow",
+      "type": "box",
+      "position": {
+        "x": 746.1554321137238,
+        "y": 573.0614744583373
+      },
+      "data": {
+        "title": "MS Flow",
+        "subtitle": "Ingesta gRPC + BG Worker",
+        "dbs": [
+          "BD FLOW (Postgres)",
+          "BD CONVERSATION (Postgres)"
+        ],
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "flow",
+        "sections": [
+          {
+            "title": "Ingesta gRPC",
+            "subtitle": "Registra en BD FLOW y en Channel"
+          },
+          {
+            "title": "BG Worker",
+            "subtitle": "Lee Channel y ejecuta validando en BD"
+          },
+          {
+            "title": "Outbox Relay",
+            "subtitle": "BD FLOW → produce events_denat"
+          }
+        ]
+      }
+    },
+    {
+      "id": "outgoing",
+      "type": "box",
+      "position": {
+        "x": -8.858675505907684,
+        "y": 899.00819374665
+      },
+      "data": {
+        "title": "MS Outgoing",
+        "subtitle": "Registra en BD CONVERSATION y envía al canal; Flow (bot) y BFF (asesor) por gRPC; proyecta events_denat",
+        "dbs": [
+          "BD CONVERSATION (Postgres)"
+        ],
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "outgoing"
+      }
+    },
+    {
+      "id": "projector",
+      "type": "box",
+      "position": {
+        "x": 1014.929787264897,
+        "y": 145.42663360125687
+      },
+      "data": {
+        "title": "Projector",
+        "subtitle": "Consume events_denat → Read Model",
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "projector"
+      }
+    },
+    {
+      "id": "readmodel",
+      "type": "box",
+      "position": {
+        "x": 1199.3556507471415,
+        "y": 342.4251149775969
+      },
+      "data": {
+        "title": "BD Read Model",
+        "subtitle": "Proyecciones de consulta",
+        "dbs": [
+          "BD Read Model (Postgres)"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "read"
+      }
+    },
+    {
+      "id": "bff",
+      "type": "box",
+      "position": {
+        "x": 1584.1914259748664,
+        "y": 436.91079523758157
+      },
+      "data": {
+        "title": "BFF (API)",
+        "subtitle": "Lee Read Model + CONFIG",
+        "dbs": [
+          "Read Model (Postgres)",
+          "BD CONFIG (Postgres)"
+        ],
+        "techs": [
+          "Node 22",
+          "NestJS"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "bff"
+      }
+    },
+    {
+      "id": "web",
+      "type": "box",
+      "position": {
+        "x": 1656.7880941561941,
+        "y": 245.3782541125073
+      },
+      "data": {
+        "title": "Cliente Web",
+        "subtitle": "UI Laraigo",
+        "techs": [
+          "React"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "web"
+      }
+    },
+    {
+      "id": "closeticket",
+      "type": "box",
+      "position": {
+        "x": 1198.566638160362,
+        "y": 524.9493138698945
+      },
+      "data": {
+        "title": "MS Ticket Manager",
+        "subtitle": "Manual gRPC (BFF) + BG cada n s; proyecta events_denat",
+        "dbs": [
+          "BD CONVERSATION (Postgres)",
+          "REDIS"
+        ],
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "close",
+        "sections": [
+          {
+            "title": "AutoClose 24h",
+            "subtitle": "BG: cierra OPEN sin respuesta ≥24h"
+          },
+          {
+            "title": "Reassign HOLDING",
+            "subtitle": "BG: busca asesor libre y reasigna"
+          },
+          {
+            "title": "Manual Close/Derive",
+            "subtitle": "gRPC desde BFF (y Flow opcional)"
+          },
+          {
+            "title": "Outbox Relay",
+            "subtitle": "BD CONVERSATION → produce events_denat"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "channels",
+      "sourceHandle": "out-right",
+      "target": "hook",
+      "targetHandle": "in-left",
+      "label": "HTTP (webhooks)",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
+      },
+      "updatable": true
+    },
+    {
+      "id": "e3",
+      "source": "kafka",
+      "sourceHandle": "out-bottom",
+      "target": "incoming",
+      "targetHandle": "in-right",
+      "label": "consumer (groupId)",
+      "labelStyle": {
+        "fill": "#ef4444",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#ef4444"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#ef4444"
+      },
+      "updatable": true
+    },
+    {
+      "id": "e11",
+      "source": "bff",
+      "sourceHandle": "out-left",
+      "target": "readmodel",
+      "targetHandle": "in-right",
+      "label": "SQL (read)",
+      "labelStyle": {
+        "fill": "#14b8a6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#14b8a6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#14b8a6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "e14",
+      "source": "bff",
+      "sourceHandle": "out-bottom",
+      "target": "closeticket",
+      "targetHandle": "in-right",
+      "label": "gRPC manual",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-outgoingout-left-channelsin-bottom",
+      "source": "outgoing",
+      "sourceHandle": "out-left",
+      "target": "channels",
+      "targetHandle": "in-bottom",
+      "label": "APIs por conector",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-outgoingout-top-kafkain-left",
+      "source": "outgoing",
+      "sourceHandle": "out-top",
+      "target": "kafka",
+      "targetHandle": "in-left",
+      "label": "producer (denat)",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-flowout-bottom-closeticketin-bottom",
+      "source": "flow",
+      "sourceHandle": "out-bottom",
+      "target": "closeticket",
+      "targetHandle": "in-bottom",
+      "label": "gRPC (opcional)",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-hookout-bottom-kafka",
+      "source": "hook",
+      "sourceHandle": "out-bottom",
+      "target": "kafka",
+      "targetHandle": null,
+      "label": "producer",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-closeticketout-left-flowin-right",
+      "source": "closeticket",
+      "sourceHandle": "out-left",
+      "target": "flow",
+      "targetHandle": "in-right",
+      "label": "gRPC (opcional)",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-bffout-bottom-outgoingin-bottom",
+      "source": "bff",
+      "sourceHandle": "out-bottom",
+      "target": "outgoing",
+      "targetHandle": "in-bottom",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-closeticketout-left-kafkain-top",
+      "source": "closeticket",
+      "sourceHandle": "out-left",
+      "target": "kafka",
+      "targetHandle": "in-top",
+      "label": "producer (denat)",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-incomingout-top-kafkain-left",
+      "source": "incoming",
+      "sourceHandle": "out-top",
+      "target": "kafka",
+      "targetHandle": "in-left",
+      "label": "producer (denat)",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-flowout-bottom-outgoingin-right",
+      "source": "flow",
+      "sourceHandle": "out-bottom",
+      "target": "outgoing",
+      "targetHandle": "in-right",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-incomingout-bottom-flowin-left",
+      "source": "incoming",
+      "sourceHandle": "out-bottom",
+      "target": "flow",
+      "targetHandle": "in-left",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-flowout-top-kafkain-right",
+      "source": "flow",
+      "sourceHandle": "out-top",
+      "target": "kafka",
+      "targetHandle": "in-right",
+      "label": "producer (denat)",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-webout-bottom-bffin-top",
+      "source": "web",
+      "sourceHandle": "out-bottom",
+      "target": "bff",
+      "targetHandle": "in-top",
+      "label": "REST / WS",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-kafkaout-bottom-projectorin-left",
+      "source": "kafka",
+      "sourceHandle": "out-bottom",
+      "target": "projector",
+      "targetHandle": "in-left",
+      "label": "consumer (projector)",
+      "labelStyle": {
+        "fill": "#ef4444",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#ef4444"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#ef4444"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-projectorout-right-readmodelin-top",
+      "source": "projector",
+      "sourceHandle": "out-right",
+      "target": "readmodel",
+      "targetHandle": "in-top",
+      "label": "write (read model)",
+      "labelStyle": {
+        "fill": "#10b981",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#10b981"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#10b981"
+      },
+      "updatable": true
+    }
+  ]
+} 
