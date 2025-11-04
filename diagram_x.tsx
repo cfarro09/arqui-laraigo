@@ -150,7 +150,7 @@ function TextNode({ id, data }: { id: string; data: any }) {
 }
 
 
-function ResizableSquareNode({ data }: { data?: any }) {
+function ResizableSquareNode() {
   // Puedes forzar que siempre muestre los handlers con isVisible si quieres
   return (
     <div style={{
