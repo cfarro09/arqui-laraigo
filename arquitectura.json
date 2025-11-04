@@ -70,15 +70,15 @@
         "sections": [
           {
             "title": "message_received",
-            "subtitle": "Hook IN → Incoming | partitions: 60"
+            "subtitle": "Hook → Incoming | p:60"
           },
           {
             "title": "events_denat",
-            "subtitle": "Incoming / Flow / TicketMgr / Outgoing → Projector | partitions: 60"
+            "subtitle": "Inc/Flow/TktMgr/Out → Proj | p:60"
           },
           {
             "title": "event_mail_received",
-            "subtitle": "Mail Events → Incoming Mail | partitions: 60"
+            "subtitle": "Mail → Inc.Mail | p:60"
           }
         ]
       }
@@ -170,8 +170,8 @@
       "id": "outgoing",
       "type": "box",
       "position": {
-        "x": -8.858675505907684,
-        "y": 899.00819374665
+        "x": -9.9302304801015,
+        "y": 902.2228586692318
       },
       "data": {
         "title": "MS Outgoing",
@@ -263,8 +263,8 @@
       "id": "bff",
       "type": "box",
       "position": {
-        "x": 1948.2027539921892,
-        "y": 630.8233718449404
+        "x": 1781.260743295059,
+        "y": 711.0222436430478
       },
       "data": {
         "title": "BFF (API)",
@@ -298,8 +298,8 @@
       "id": "web",
       "type": "box",
       "position": {
-        "x": 1957.8628841518303,
-        "y": 400.16811789557454
+        "x": 1789.465120255966,
+        "y": 398.4671303814749
       },
       "data": {
         "title": "Cliente Web",
@@ -328,8 +328,8 @@
       "id": "closeticket",
       "type": "box",
       "position": {
-        "x": 1222.3804633577568,
-        "y": 376.96340014322584
+        "x": 1264.6671412149406,
+        "y": 379.87972275406617
       },
       "data": {
         "title": "MS Ticket Manager",
@@ -380,8 +380,8 @@
       "id": "incomingmail",
       "type": "box",
       "position": {
-        "x": 400.3429383361457,
-        "y": 1181.5880110507935
+        "x": 458.6316237326006,
+        "y": 897.1563440654138
       },
       "data": {
         "title": "MS Incoming Mail",
@@ -870,29 +870,6 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-ticketmailmanagerout-left-outgoingin-right",
-      "source": "ticketmailmanager",
-      "sourceHandle": "out-left",
-      "target": "outgoing",
-      "targetHandle": "in-right",
-      "label": "gRPC",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
       "id": "reactflow__edge-bffout-left-readmodelin-bottom",
       "source": "bff",
       "sourceHandle": "out-left",
@@ -916,8 +893,31 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-incomingmailout-left-outgoingin-bottom",
+      "id": "reactflow__edge-incomingmailout-left-outgoingin-right",
       "source": "incomingmail",
+      "sourceHandle": "out-left",
+      "target": "outgoing",
+      "targetHandle": "in-right",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-ticketmailmanagerout-left-outgoingin-bottom",
+      "source": "ticketmailmanager",
       "sourceHandle": "out-left",
       "target": "outgoing",
       "targetHandle": "in-bottom",
@@ -939,11 +939,11 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-bffout-bottom-ticketmailmanagerin-top",
+      "id": "reactflow__edge-bffout-bottom-ticketmailmanagerin-right",
       "source": "bff",
       "sourceHandle": "out-bottom",
       "target": "ticketmailmanager",
-      "targetHandle": "in-top",
+      "targetHandle": "in-right",
       "label": "gRPC",
       "labelStyle": {
         "fill": "#8b5cf6",
