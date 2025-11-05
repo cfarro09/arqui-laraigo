@@ -19,7 +19,7 @@
         "y": 60
       },
       "data": {
-        "title": "MS Hook IN",
+        "title": "ticket-hook-service",
         "subtitle": "Normaliza eventos",
         "techs": [
           ".NET 10"
@@ -91,7 +91,7 @@
         "y": 601.5884814665851
       },
       "data": {
-        "title": "MS Incoming",
+        "title": "MS ticket-intake-service",
         "subtitle": "Consumer + Enrich (Outbox CONVERSATION)",
         "dbs": [
           "BD CONVERSATION (Postgres)",
@@ -126,7 +126,7 @@
         "y": 637.6989999941236
       },
       "data": {
-        "title": "MS Flow",
+        "title": "MS ticket-flow-service",
         "subtitle": "Ingesta gRPC + BG Worker",
         "dbs": [
           "BD FLOW (Postgres)",
@@ -332,7 +332,7 @@
         "y": 379.87972275406617
       },
       "data": {
-        "title": "MS Ticket Manager",
+        "title": "MS ticket-manager-service",
         "subtitle": "Manual gRPC (BFF) + BG cada n s; proyecta events_denat",
         "dbs": [
           "BD CONVERSATION (Postgres)",
@@ -384,7 +384,7 @@
         "y": 897.1563440654138
       },
       "data": {
-        "title": "MS Incoming Mail",
+        "title": "MS mail-intake-service",
         "subtitle": "Consumer event_mail_received + Enrich",
         "dbs": [
           "BD MAIL (Postgres)",
@@ -418,7 +418,7 @@
         "y": 1108.731340653878
       },
       "data": {
-        "title": "MS Ticket Mail Manager",
+        "title": "MS mail-manager-service",
         "subtitle": "Cierre y asignación de tickets de mail",
         "dbs": [
           "BD MAIL (Postgres)"

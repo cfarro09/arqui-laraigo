@@ -183,7 +183,7 @@ function Info() {
           <div style={{ fontWeight: 700, color: "#0f172a" }}>Relays de Outbox</div>
           <ul style={{ paddingLeft: 18, marginTop: 6 }}>
             <li>Relay BD CONVERSATION: en <b>Ticket Manager</b></li>
-            <li>Relay BD FLOW: en <b>MS Flow</b></li>
+            <li>Relay BD FLOW: en <b>MS ticket-flow-service</b></li>
           </ul>
         </div>
         <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
@@ -204,9 +204,9 @@ function Info() {
         <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
           <div style={{ fontWeight: 700, color: "#0f172a" }}>Tecnologías</div>
           <ul style={{ paddingLeft: 18, marginTop: 6 }}>
-            <li>MS Incoming: .NET 10</li>
-            <li>MS Flow: .NET 10</li>
-            <li>MS Hook IN: .NET 10</li>
+            <li>MS ticket-intake-service: .NET 10</li>
+            <li>MS ticket-flow-service: .NET 10</li>
+            <li>ticket-hook-service: .NET 10</li>
             <li>MS Outgoing: .NET 10</li>
             <li>Projector: .NET 10</li>
             <li>Ticket Manager: .NET 10</li>
@@ -218,7 +218,7 @@ function Info() {
         <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, padding: 12, background: "#f1f5f9" }}>
           <div style={{ fontWeight: 700, color: "#0f172a" }}>Topics Kafka</div>
           <ul style={{ paddingLeft: 18, marginTop: 6 }}>
-            <li><b>message_received</b>: Producer = MS Hook IN · Consumer = MS Incoming · <b>partitions</b> = 60</li>
+            <li><b>message_received</b>: Producer = ticket-hook-service · Consumer = MS ticket-intake-service · <b>partitions</b> = 60</li>
             <li><b>events_denat</b>: Producers = Incoming, Flow, Ticket Manager, Outgoing · Consumer = Projector · <b>partitions</b> = 60</li>
           </ul>
         </div>
