@@ -15,8 +15,8 @@
       "id": "hook",
       "type": "box",
       "position": {
-        "x": 300,
-        "y": 60
+        "x": 241.74176882001012,
+        "y": 147.38734676998487
       },
       "data": {
         "title": "MS ticket-hook-service",
@@ -122,8 +122,8 @@
       "id": "flow",
       "type": "box",
       "position": {
-        "x": 820.998882734108,
-        "y": 637.6989999941236
+        "x": 811.800214653057,
+        "y": 630.0334432599144
       },
       "data": {
         "title": "MS ticket-flow-service",
@@ -170,8 +170,8 @@
       "id": "outgoing",
       "type": "box",
       "position": {
-        "x": -9.9302304801015,
-        "y": 902.2228586692318
+        "x": -135.64536092113232,
+        "y": 894.5573019350225
       },
       "data": {
         "title": "MS ticket-out-service",
@@ -380,8 +380,8 @@
       "id": "incomingmail",
       "type": "box",
       "position": {
-        "x": 458.6316237326006,
-        "y": 897.1563440654138
+        "x": 478.5620712415446,
+        "y": 861.8947830880516
       },
       "data": {
         "title": "MS mail-intake-service",
@@ -411,11 +411,71 @@
       }
     },
     {
+      "id": "mailhook",
+      "type": "box",
+      "position": {
+        "x": 699.4465366151592,
+        "y": -4.535694636685037
+      },
+      "data": {
+        "title": "MS mail-hook-service",
+        "subtitle": "Recibe correos y produce event_mail_received",
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "mail"
+      }
+    },
+    {
+      "id": "mailout",
+      "type": "box",
+      "position": {
+        "x": 219.29856200222332,
+        "y": 1157.5627062694286
+      },
+      "data": {
+        "title": "MS mail-out-service",
+        "subtitle": "Envía correos, recibe de mail-manager y mail-intake",
+        "techs": [
+          ".NET 10"
+        ],
+        "handles": {
+          "in": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "out": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "theme": "mail"
+      }
+    },
+    {
       "id": "ticketmailmanager",
       "type": "box",
       "position": {
-        "x": 1276.6646022138586,
-        "y": 1108.731340653878
+        "x": 1397.7803986143638,
+        "y": 1087.267781798092
       },
       "data": {
         "title": "MS mail-manager-service",
@@ -801,29 +861,6 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-kafkaout-bottom-projectorin-left",
-      "source": "kafka",
-      "sourceHandle": "out-bottom",
-      "target": "projector",
-      "targetHandle": "in-left",
-      "label": "consumer (projector)",
-      "labelStyle": {
-        "fill": "#ef4444",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#ef4444"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#ef4444"
-      },
-      "updatable": true
-    },
-    {
       "id": "reactflow__edge-projectorout-right-readmodelin-top",
       "source": "projector",
       "sourceHandle": "out-right",
@@ -893,52 +930,6 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-incomingmailout-left-outgoingin-right",
-      "source": "incomingmail",
-      "sourceHandle": "out-left",
-      "target": "outgoing",
-      "targetHandle": "in-right",
-      "label": "gRPC",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-ticketmailmanagerout-left-outgoingin-bottom",
-      "source": "ticketmailmanager",
-      "sourceHandle": "out-left",
-      "target": "outgoing",
-      "targetHandle": "in-bottom",
-      "label": "gRPC",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
       "id": "reactflow__edge-bffout-bottom-ticketmailmanagerin-right",
       "source": "bff",
       "sourceHandle": "out-bottom",
@@ -958,6 +949,98 @@
       "style": {
         "strokeWidth": 2.2,
         "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-mailhookout-bottom-kafkain-top",
+      "source": "mailhook",
+      "sourceHandle": "out-bottom",
+      "target": "kafka",
+      "targetHandle": "in-top",
+      "label": "producer event_mail_received",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-incomingmailout-left-mailoutin-top",
+      "source": "incomingmail",
+      "sourceHandle": "out-left",
+      "target": "mailout",
+      "targetHandle": "in-top",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-ticketmailmanagerout-left-mailoutin-right",
+      "source": "ticketmailmanager",
+      "sourceHandle": "out-left",
+      "target": "mailout",
+      "targetHandle": "in-right",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-kafkaout-bottom-projectorin-left",
+      "source": "kafka",
+      "sourceHandle": "out-bottom",
+      "target": "projector",
+      "targetHandle": "in-left",
+      "label": "consumer (projector)",
+      "labelStyle": {
+        "fill": "#ef4444",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#ef4444"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#ef4444"
       },
       "updatable": true
     }
