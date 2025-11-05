@@ -19,7 +19,7 @@
         "y": 60
       },
       "data": {
-        "title": "ticket-hook-service",
+        "title": "MS ticket-hook-service",
         "subtitle": "Normaliza eventos",
         "techs": [
           ".NET 10"
@@ -69,7 +69,7 @@
         "theme": "kafka",
         "sections": [
           {
-            "title": "message_received",
+            "title": "event_message_received",
             "subtitle": "Hook → Incoming | p:60"
           },
           {
@@ -174,7 +174,7 @@
         "y": 902.2228586692318
       },
       "data": {
-        "title": "MS Outgoing",
+        "title": "MS ticket-out-service",
         "subtitle": "Registra en BD CONVERSATION y envía al canal; Flow (bot) y BFF (asesor) por gRPC; proyecta events_denat",
         "dbs": [
           "BD CONVERSATION (Postgres)"
