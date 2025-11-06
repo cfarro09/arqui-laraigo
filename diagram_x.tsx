@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState, useRef, useEffect } from "react";
-import ReactFlow, { Background, Controls, Handle, Position, addEdge, useNodesState, useEdgesState, MarkerType, ConnectionMode, updateEdge, NodeResizer, useOnSelectionChange, ReactFlowProvider } from "reactflow";
+import ReactFlow, { Background, Controls, Handle, Position, addEdge, useNodesState, useEdgesState, MarkerType, ConnectionMode, reconnectEdge, NodeResizer, useOnSelectionChange, ReactFlowProvider } from "reactflow";
 import "reactflow/dist/style.css";
 import { Play, Pause, Database, Cable, Server, MessageSquare, Network, Send, Settings, Zap, Code2, BadgeCheck, Users, Clock3 } from "lucide-react";
 import arquitecturaData from './arquitectura.json';
@@ -63,10 +63,10 @@ function BoxNode({ data }: { data: any }) {
         const idx = h.endsWith("-2") ? 1 : 0;
         let offsetStyle = {};
         // Centrar ambos puntos en el medio de cada borde
-        if (basePos === "top") offsetStyle = { left: 120 + (idx === 0 ? -25 : 25) };
-        if (basePos === "bottom") offsetStyle = { left: 120 + (idx === 0 ? -25 : 25) };
-        if (basePos === "left") offsetStyle = { top: 60 + (idx === 0 ? -25 : 25) };
-        if (basePos === "right") offsetStyle = { top: 60 + (idx === 0 ? -25 : 25) };
+        if (basePos === "top") offsetStyle = { left: 120 + (idx === 0 ? -10 : 10) };
+        if (basePos === "bottom") offsetStyle = { left: 120 + (idx === 0 ? -10 : 10) };
+        if (basePos === "left") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
+        if (basePos === "right") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
         return (
           <Handle key={`in-${h}`} id={`in-${h}`} type="target" position={handlePosMap[basePos]} style={{ width: 8, height: 8, background: "#6366f1", ...offsetStyle }} />
         );
@@ -80,14 +80,64 @@ function BoxNode({ data }: { data: any }) {
         if (basePos === "left") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
         if (basePos === "right") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
         return (
-          <Handle key={`out-${h}`} id={`out-${h}`} type="source" position={handlePosMap[basePos]} style={{ width: 8, height: 8, background: "#6366f1", ...offsetStyle }} />
+          <Handle key={`out-${h}`} id={`out-${h}`} type="source" position={handlePosMap[basePos]} style={{ width: 8, height: 8, background: "#ef4444", ...offsetStyle }} />
         );
       })}
     </div>
   );
 }
 
-function ChannelsNode() { const t = (palette as any).channels; return (<div style={{ ...cardBase, background: t.bg, borderColor: t.border }}><div style={{ ...row, alignItems: "center" }}><div style={{ ...iconWrapBase, background: t.iconBg }}><MessageSquare size={24} /></div><div><div style={titleStyle}>Canales</div><div style={subtitleStyle}>Meta · WhatsApp · FB · IG</div></div></div><Handle id="in-left" type="target" position={Position.Left} style={{ width: 8, height: 8, background: "#06b6d4" }} /><Handle id="out-left" type="source" position={Position.Left} style={{ width: 8, height: 8, background: "#06b6d4" }} /><Handle id="in-right" type="target" position={Position.Right} style={{ width: 8, height: 8, background: "#06b6d4" }} /><Handle id="out-right" type="source" position={Position.Right} style={{ width: 8, height: 8, background: "#06b6d4" }} /><Handle id="in-top" type="target" position={Position.Top} style={{ width: 8, height: 8, background: "#06b6d4" }} /><Handle id="out-top" type="source" position={Position.Top} style={{ width: 8, height: 8, background: "#06b6d4" }} /><Handle id="in-bottom" type="target" position={Position.Bottom} style={{ width: 8, height: 8, background: "#06b6d4" }} /><Handle id="out-bottom" type="source" position={Position.Bottom} style={{ width: 8, height: 8, background: "#06b6d4" }} /></div>); }
+function ChannelsNode({ data }: { data: any }) { 
+  const t = (palette as any).channels; 
+  const handles = data?.handles || { 
+    in: ["top-1", "top-2", "right-1", "right-2", "bottom-1", "bottom-2", "left-1", "left-2"], 
+    out: ["top-1", "top-2", "right-1", "right-2", "bottom-1", "bottom-2", "left-1", "left-2"] 
+  };
+  const inHandles = Array.isArray(handles.in) ? handles.in : ["top-1", "top-2", "right-1", "right-2", "bottom-1", "bottom-2", "left-1", "left-2"];
+  const outHandles = Array.isArray(handles.out) ? handles.out : ["top-1", "top-2", "right-1", "right-2", "bottom-1", "bottom-2", "left-1", "left-2"];
+  
+  return (
+    <div style={{ ...cardBase, background: t.bg, borderColor: t.border }}>
+      <div style={{ ...row, alignItems: "center" }}>
+        <div style={{ ...iconWrapBase, background: t.iconBg }}>
+          <MessageSquare size={24} />
+        </div>
+        <div>
+          <div style={titleStyle}>Canales</div>
+          <div style={subtitleStyle}>Meta · WhatsApp · FB · IG</div>
+        </div>
+      </div>
+      
+      {/* Handles de entrada */}
+      {inHandles.map((h: string) => {
+        const basePos = String(h).replace(/-\d+$/, "");
+        const idx = h.endsWith("-2") ? 1 : 0;
+        let offsetStyle = {};
+        if (basePos === "top") offsetStyle = { left: 120 + (idx === 0 ? -10 : 10) };
+        if (basePos === "bottom") offsetStyle = { left: 120 + (idx === 0 ? -10 : 10) };
+        if (basePos === "left") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
+        if (basePos === "right") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
+        return (
+          <Handle key={`in-${h}`} id={`in-${h}`} type="target" position={handlePosMap[basePos]} style={{ width: 8, height: 8, background: "#6366f1", ...offsetStyle }} />
+        );
+      })}
+      
+      {/* Handles de salida */}
+      {outHandles.map((h: string) => {
+        const basePos = String(h).replace(/-\d+$/, "");
+        const idx = h.endsWith("-2") ? 1 : 0;
+        let offsetStyle = {};
+        if (basePos === "top") offsetStyle = { left: 120 + (idx === 0 ? -10 : 10) };
+        if (basePos === "bottom") offsetStyle = { left: 120 + (idx === 0 ? -10 : 10) };
+        if (basePos === "left") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
+        if (basePos === "right") offsetStyle = { top: 60 + (idx === 0 ? -10 : 10) };
+        return (
+          <Handle key={`out-${h}`} id={`out-${h}`} type="source" position={handlePosMap[basePos]} style={{ width: 8, height: 8, background: "#ef4444", ...offsetStyle }} />
+        );
+      })}
+    </div>
+  ); 
+}
 
 const nodeTypes = { box: BoxNode, channels: ChannelsNode, resizable: ResizableSquareNode, textNode: TextNode, } as const;
 
@@ -328,7 +378,7 @@ function ArquitecturaReactFlow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onEdgeUpdate = useCallback((oldEdge: any, newConn: any) => { setEdges((eds) => updateEdge(oldEdge, { ...newConn, animated: oldEdge.animated, type: oldEdge.type, markerEnd: oldEdge.markerEnd, style: oldEdge.style }, eds)); }, [setEdges]);
+  const onEdgeUpdate = useCallback((oldEdge: any, newConn: any) => { setEdges((eds) => reconnectEdge(oldEdge, { ...newConn, animated: oldEdge.animated, type: oldEdge.type, markerEnd: oldEdge.markerEnd, style: oldEdge.style }, eds)); }, [setEdges]);
   const onConnect = useCallback((connection: any) => setEdges((eds) => addEdge({ ...connection, animated, type: "smoothstep", markerEnd: { type: MarkerType.ArrowClosed }, style: { strokeWidth: 2 } }, eds)), [animated, setEdges]);
 
   const toggleAnim = () => { setEdges((eds) => eds.map((e) => ({ ...e, animated: !animated }))); setAnimated((a) => !a); };
@@ -450,7 +500,7 @@ function ArquitecturaReactFlow() {
           </div>
         </div>
         <div style={{ border: "1px solid #e2e8f0", borderRadius: 18, background: "rgba(255,255,255,.6)", overflow: "hidden", height: "80vh", minHeight: 700 }}>
-          <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect} onEdgeUpdate={onEdgeUpdate} nodeTypes={nodeTypes} defaultViewport={{ x: 0, y: 0, zoom: 0.8 }} connectionMode={ConnectionMode.Loose} edgeUpdaterRadius={24} >
+          <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect} onEdgeUpdate={onEdgeUpdate} nodeTypes={nodeTypes} defaultViewport={{ x: 0, y: 0, zoom: 0.8 }} connectionMode={ConnectionMode.Strict} edgeUpdaterRadius={24} >
             <Controls position="bottom-right" />
             <Background gap={16} size={1} />
           </ReactFlow>

@@ -4,19 +4,41 @@
       "id": "channels",
       "type": "channels",
       "position": {
-        "x": -147.5089009902115,
-        "y": 133.2701708588911
+        "x": -387.167111849407,
+        "y": -2.6232879704751895
       },
       "data": {
-        "theme": "channels"
+        "theme": "channels",
+        "handles": {
+          "in": [
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
+          ],
+          "out": [
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
+          ]
+        }
       }
     },
     {
       "id": "hook",
       "type": "box",
       "position": {
-        "x": 241.74176882001012,
-        "y": 147.38734676998487
+        "x": 75.06858838343032,
+        "y": 6.345705681518552
       },
       "data": {
         "title": "MS ticket-hook-service",
@@ -26,16 +48,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "hook"
@@ -45,8 +75,8 @@
       "id": "kafka",
       "type": "box",
       "position": {
-        "x": 471.7356553282008,
-        "y": 286.24964947516094
+        "x": 494.9814085101025,
+        "y": 79.45564216062894
       },
       "data": {
         "title": "Kafka",
@@ -54,16 +84,24 @@
         "cardWidth": 360,
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "kafka",
@@ -87,8 +125,8 @@
       "id": "incoming",
       "type": "box",
       "position": {
-        "x": 186.90482719182972,
-        "y": 601.5884814665851
+        "x": 121.02258795599835,
+        "y": 353.246397319905
       },
       "data": {
         "title": "MS ticket-intake-service",
@@ -103,16 +141,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "incoming"
@@ -122,8 +168,8 @@
       "id": "flow",
       "type": "box",
       "position": {
-        "x": 811.800214653057,
-        "y": 630.0334432599144
+        "x": 788.935238099108,
+        "y": 423.7682445992973
       },
       "data": {
         "title": "MS ticket-flow-service",
@@ -137,16 +183,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "flow",
@@ -170,8 +224,8 @@
       "id": "outgoing",
       "type": "box",
       "position": {
-        "x": -135.64536092113232,
-        "y": 894.5573019350225
+        "x": -155.56661761738383,
+        "y": 640.6990398817699
       },
       "data": {
         "title": "MS ticket-out-service",
@@ -184,16 +238,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "outgoing"
@@ -203,8 +265,8 @@
       "id": "projector",
       "type": "box",
       "position": {
-        "x": 1091.4742253993807,
-        "y": 128.4167584602605
+        "x": 1113.8550740776213,
+        "y": 24.252218798512672
       },
       "data": {
         "title": "Projector",
@@ -214,16 +276,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "projector"
@@ -233,8 +303,8 @@
       "id": "readmodel",
       "type": "box",
       "position": {
-        "x": 1575.2738913631617,
-        "y": 194.4392012509283
+        "x": 1678.556440550429,
+        "y": 192.5585243297927
       },
       "data": {
         "title": "BD Read Model",
@@ -244,16 +314,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "read"
@@ -263,8 +341,8 @@
       "id": "bff",
       "type": "box",
       "position": {
-        "x": 1781.260743295059,
-        "y": 711.0222436430478
+        "x": 1827.260743295059,
+        "y": 589.0222436430478
       },
       "data": {
         "title": "BFF (API)",
@@ -279,16 +357,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "bff"
@@ -298,8 +384,8 @@
       "id": "web",
       "type": "box",
       "position": {
-        "x": 1789.465120255966,
-        "y": 398.4671303814749
+        "x": 1833.2497337781913,
+        "y": 375.9650660465165
       },
       "data": {
         "title": "Cliente Web",
@@ -309,16 +395,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "web"
@@ -328,8 +422,8 @@
       "id": "closeticket",
       "type": "box",
       "position": {
-        "x": 1264.6671412149406,
-        "y": 379.87972275406617
+        "x": 1321.2301597012831,
+        "y": 334.77814505771937
       },
       "data": {
         "title": "MS ticket-manager-service",
@@ -343,16 +437,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "close",
@@ -380,8 +482,8 @@
       "id": "incomingmail",
       "type": "box",
       "position": {
-        "x": 478.5620712415446,
-        "y": 861.8947830880516
+        "x": 557.7546523732191,
+        "y": 918.7758701230972
       },
       "data": {
         "title": "MS mail-intake-service",
@@ -395,16 +497,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "incoming"
@@ -414,8 +524,8 @@
       "id": "mailhook",
       "type": "box",
       "position": {
-        "x": 699.4465366151592,
-        "y": -4.535694636685037
+        "x": 117.04386043980253,
+        "y": -140.48562920629394
       },
       "data": {
         "title": "MS mail-hook-service",
@@ -425,16 +535,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "mail"
@@ -444,8 +562,8 @@
       "id": "mailout",
       "type": "box",
       "position": {
-        "x": 219.29856200222332,
-        "y": 1157.5627062694286
+        "x": -54.20071003274012,
+        "y": 918.6557067321319
       },
       "data": {
         "title": "MS mail-out-service",
@@ -455,16 +573,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "mail"
@@ -474,8 +600,8 @@
       "id": "ticketmailmanager",
       "type": "box",
       "position": {
-        "x": 1397.7803986143638,
-        "y": 1087.267781798092
+        "x": 1198.6252737394223,
+        "y": 876.5960190179148
       },
       "data": {
         "title": "MS mail-manager-service",
@@ -488,16 +614,24 @@
         ],
         "handles": {
           "in": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ],
           "out": [
-            "top",
-            "right",
-            "bottom",
-            "left"
+            "top-1",
+            "top-2",
+            "right-1",
+            "right-2",
+            "bottom-1",
+            "bottom-2",
+            "left-1",
+            "left-2"
           ]
         },
         "theme": "close",
@@ -518,9 +652,9 @@
     {
       "id": "e1",
       "source": "channels",
-      "sourceHandle": "out-right",
+      "sourceHandle": "out-right-1",
       "target": "hook",
-      "targetHandle": "in-left",
+      "targetHandle": "in-left-1",
       "label": "HTTP (webhooks)",
       "labelStyle": {
         "fill": "#06b6d4",
@@ -541,9 +675,9 @@
     {
       "id": "e3",
       "source": "kafka",
-      "sourceHandle": "out-bottom",
+      "sourceHandle": "out-bottom-1",
       "target": "incoming",
-      "targetHandle": "in-right",
+      "targetHandle": "in-right-1",
       "label": "consumer (groupId)",
       "labelStyle": {
         "fill": "#ef4444",
@@ -562,34 +696,11 @@
       "updatable": true
     },
     {
-      "id": "e14",
-      "source": "bff",
-      "sourceHandle": "out-bottom",
-      "target": "closeticket",
-      "targetHandle": "in-right",
-      "label": "gRPC manual",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
       "id": "reactflow__edge-outgoingout-left-channelsin-bottom",
       "source": "outgoing",
-      "sourceHandle": "out-left",
+      "sourceHandle": "out-left-1",
       "target": "channels",
-      "targetHandle": "in-bottom",
+      "targetHandle": "in-bottom-1",
       "label": "APIs por conector",
       "labelStyle": {
         "fill": "#06b6d4",
@@ -610,124 +721,9 @@
     {
       "id": "reactflow__edge-outgoingout-top-kafkain-left",
       "source": "outgoing",
-      "sourceHandle": "out-top",
+      "sourceHandle": "out-top-1",
       "target": "kafka",
-      "targetHandle": "in-left",
-      "label": "producer (denat)",
-      "labelStyle": {
-        "fill": "#f59e0b",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#f59e0b"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#f59e0b"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-flowout-bottom-closeticketin-bottom",
-      "source": "flow",
-      "sourceHandle": "out-bottom",
-      "target": "closeticket",
-      "targetHandle": "in-bottom",
-      "label": "gRPC (opcional)",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-hookout-bottom-kafka",
-      "source": "hook",
-      "sourceHandle": "out-bottom",
-      "target": "kafka",
-      "targetHandle": null,
-      "label": "producer",
-      "labelStyle": {
-        "fill": "#f59e0b",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#f59e0b"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#f59e0b"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-closeticketout-left-flowin-right",
-      "source": "closeticket",
-      "sourceHandle": "out-left",
-      "target": "flow",
-      "targetHandle": "in-right",
-      "label": "gRPC (opcional)",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-bffout-bottom-outgoingin-bottom",
-      "source": "bff",
-      "sourceHandle": "out-bottom",
-      "target": "outgoing",
-      "targetHandle": "in-bottom",
-      "label": "gRPC",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-closeticketout-left-kafkain-top",
-      "source": "closeticket",
-      "sourceHandle": "out-left",
-      "target": "kafka",
-      "targetHandle": "in-top",
+      "targetHandle": "in-left-1",
       "label": "producer (denat)",
       "labelStyle": {
         "fill": "#f59e0b",
@@ -748,9 +744,9 @@
     {
       "id": "reactflow__edge-incomingout-top-kafkain-left",
       "source": "incoming",
-      "sourceHandle": "out-top",
+      "sourceHandle": "out-top-1",
       "target": "kafka",
-      "targetHandle": "in-left",
+      "targetHandle": "in-left-2",
       "label": "producer (denat)",
       "labelStyle": {
         "fill": "#f59e0b",
@@ -765,107 +761,15 @@
       "style": {
         "strokeWidth": 2.2,
         "stroke": "#f59e0b"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-flowout-bottom-outgoingin-right",
-      "source": "flow",
-      "sourceHandle": "out-bottom",
-      "target": "outgoing",
-      "targetHandle": "in-right",
-      "label": "gRPC",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-incomingout-bottom-flowin-left",
-      "source": "incoming",
-      "sourceHandle": "out-bottom",
-      "target": "flow",
-      "targetHandle": "in-left",
-      "label": "gRPC",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-flowout-top-kafkain-right",
-      "source": "flow",
-      "sourceHandle": "out-top",
-      "target": "kafka",
-      "targetHandle": "in-right",
-      "label": "producer (denat)",
-      "labelStyle": {
-        "fill": "#f59e0b",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#f59e0b"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#f59e0b"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-webout-bottom-bffin-top",
-      "source": "web",
-      "sourceHandle": "out-bottom",
-      "target": "bff",
-      "targetHandle": "in-top",
-      "label": "REST / WS",
-      "labelStyle": {
-        "fill": "#06b6d4",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#06b6d4"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#06b6d4"
       },
       "updatable": true
     },
     {
       "id": "reactflow__edge-projectorout-right-readmodelin-top",
       "source": "projector",
-      "sourceHandle": "out-right",
+      "sourceHandle": "out-right-1",
       "target": "readmodel",
-      "targetHandle": "in-top",
+      "targetHandle": "in-top-1",
       "label": "write (read model)",
       "labelStyle": {
         "fill": "#10b981",
@@ -884,11 +788,149 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-kafkaout-bottom-incomingmailin-top",
+      "id": "reactflow__edge-bffout-bottom-ticketmailmanagerin-right",
+      "source": "bff",
+      "sourceHandle": "out-bottom-2",
+      "target": "ticketmailmanager",
+      "targetHandle": "in-right-1",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-closeticketout-left-2-flowin-right-1",
+      "source": "closeticket",
+      "sourceHandle": "out-left-2",
+      "target": "flow",
+      "targetHandle": "in-right-1",
+      "label": "gRPC (opcional)",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-flowout-top-1-kafkain-right-2",
+      "source": "flow",
+      "sourceHandle": "out-top-1",
+      "target": "kafka",
+      "targetHandle": "in-right-2",
+      "label": "producer (denat)",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-kafkaout-top-2-projectorin-left-1",
       "source": "kafka",
-      "sourceHandle": "out-bottom",
+      "sourceHandle": "out-top-2",
+      "target": "projector",
+      "targetHandle": "in-left-1",
+      "label": "consumer (projector)",
+      "labelStyle": {
+        "fill": "#ef4444",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#ef4444"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#ef4444"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-closeticketout-left-1-kafkain-right-1",
+      "source": "closeticket",
+      "sourceHandle": "out-left-1",
+      "target": "kafka",
+      "targetHandle": "in-right-1",
+      "label": "producer (denat)",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-flowout-right-2-closeticketin-bottom-1",
+      "source": "flow",
+      "sourceHandle": "out-right-2",
+      "target": "closeticket",
+      "targetHandle": "in-bottom-1",
+      "label": "gRPC (opcional)",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-kafkaout-bottom-2-incomingmailin-top-1",
+      "source": "kafka",
+      "sourceHandle": "out-bottom-2",
       "target": "incomingmail",
-      "targetHandle": "in-top",
+      "targetHandle": "in-top-1",
       "label": "consumer (mail)",
       "labelStyle": {
         "fill": "#ef4444",
@@ -907,11 +949,80 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-bffout-left-readmodelin-bottom",
+      "id": "reactflow__edge-bffout-left-2-closeticketin-right-1",
       "source": "bff",
-      "sourceHandle": "out-left",
+      "sourceHandle": "out-left-2",
+      "target": "closeticket",
+      "targetHandle": "in-right-1",
+      "label": "gRPC manual",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-bffout-bottom-1-outgoingin-bottom-1",
+      "source": "bff",
+      "sourceHandle": "out-bottom-1",
+      "target": "outgoing",
+      "targetHandle": "in-bottom-1",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-webout-bottom-1-bffin-top-2",
+      "source": "web",
+      "sourceHandle": "out-bottom-1",
+      "target": "bff",
+      "targetHandle": "in-top-2",
+      "label": "REST / WS",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-bffout-left-1-readmodelin-bottom-1",
+      "source": "bff",
+      "sourceHandle": "out-left-1",
       "target": "readmodel",
-      "targetHandle": "in-bottom",
+      "targetHandle": "in-bottom-1",
       "label": "SQL (read)",
       "labelStyle": {
         "fill": "#14b8a6",
@@ -930,34 +1041,11 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-bffout-bottom-ticketmailmanagerin-right",
-      "source": "bff",
-      "sourceHandle": "out-bottom",
-      "target": "ticketmailmanager",
-      "targetHandle": "in-right",
-      "label": "gRPC",
-      "labelStyle": {
-        "fill": "#8b5cf6",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#8b5cf6"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-mailhookout-bottom-kafkain-top",
+      "id": "reactflow__edge-mailhookout-right-1-kafkain-top-1",
       "source": "mailhook",
-      "sourceHandle": "out-bottom",
+      "sourceHandle": "out-right-1",
       "target": "kafka",
-      "targetHandle": "in-top",
+      "targetHandle": "in-top-1",
       "label": "producer event_mail_received",
       "labelStyle": {
         "fill": "#f59e0b",
@@ -976,11 +1064,80 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-incomingmailout-left-mailoutin-top",
+      "id": "reactflow__edge-hookout-right-1-kafkain-top-1",
+      "source": "hook",
+      "sourceHandle": "out-right-1",
+      "target": "kafka",
+      "targetHandle": "in-top-1",
+      "label": "producer",
+      "labelStyle": {
+        "fill": "#f59e0b",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#f59e0b"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#f59e0b"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-incomingout-right-2-flowin-left-1",
+      "source": "incoming",
+      "sourceHandle": "out-right-2",
+      "target": "flow",
+      "targetHandle": "in-left-1",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-flowout-left-2-outgoingin-right-1",
+      "source": "flow",
+      "sourceHandle": "out-left-2",
+      "target": "outgoing",
+      "targetHandle": "in-right-1",
+      "label": "gRPC",
+      "labelStyle": {
+        "fill": "#8b5cf6",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8b5cf6"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-incomingmailout-left-1-mailoutin-right-1",
       "source": "incomingmail",
-      "sourceHandle": "out-left",
+      "sourceHandle": "out-left-1",
       "target": "mailout",
-      "targetHandle": "in-top",
+      "targetHandle": "in-right-1",
       "label": "gRPC",
       "labelStyle": {
         "fill": "#8b5cf6",
@@ -999,11 +1156,11 @@
       "updatable": true
     },
     {
-      "id": "reactflow__edge-ticketmailmanagerout-left-mailoutin-right",
+      "id": "reactflow__edge-ticketmailmanagerout-bottom-1-mailoutin-bottom-2",
       "source": "ticketmailmanager",
-      "sourceHandle": "out-left",
+      "sourceHandle": "out-bottom-1",
       "target": "mailout",
-      "targetHandle": "in-right",
+      "targetHandle": "in-bottom-2",
       "label": "gRPC",
       "labelStyle": {
         "fill": "#8b5cf6",
@@ -1018,29 +1175,6 @@
       "style": {
         "strokeWidth": 2.2,
         "stroke": "#8b5cf6"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-kafkaout-bottom-projectorin-left",
-      "source": "kafka",
-      "sourceHandle": "out-bottom",
-      "target": "projector",
-      "targetHandle": "in-left",
-      "label": "consumer (projector)",
-      "labelStyle": {
-        "fill": "#ef4444",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#ef4444"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#ef4444"
       },
       "updatable": true
     }
