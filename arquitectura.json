@@ -37,8 +37,8 @@
       "id": "hook",
       "type": "box",
       "position": {
-        "x": 75.06858838343032,
-        "y": 6.345705681518552
+        "x": 92.56652404847193,
+        "y": 12.178350903199089
       },
       "data": {
         "title": "MS ticket-hook-service",
@@ -224,8 +224,8 @@
       "id": "outgoing",
       "type": "box",
       "position": {
-        "x": -155.56661761738383,
-        "y": 640.6990398817699
+        "x": -126.40339150898114,
+        "y": 634.8663946600892
       },
       "data": {
         "title": "MS ticket-out-service",
@@ -646,32 +646,27 @@
           }
         ]
       }
+    },
+    {
+      "id": "resizable_1762390122379",
+      "type": "resizable",
+      "position": {
+        "x": -182.914560657901,
+        "y": 306.5580582507521
+      },
+      "data": {}
+    },
+    {
+      "id": "resizable_1762390143656",
+      "type": "resizable",
+      "position": {
+        "x": -182.52506643884777,
+        "y": 859.7207760192161
+      },
+      "data": {}
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "channels",
-      "sourceHandle": "out-right-1",
-      "target": "hook",
-      "targetHandle": "in-left-1",
-      "label": "HTTP (webhooks)",
-      "labelStyle": {
-        "fill": "#06b6d4",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#06b6d4"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#06b6d4"
-      },
-      "updatable": true
-    },
     {
       "id": "e3",
       "source": "kafka",
@@ -692,29 +687,6 @@
       "style": {
         "strokeWidth": 2.2,
         "stroke": "#ef4444"
-      },
-      "updatable": true
-    },
-    {
-      "id": "reactflow__edge-outgoingout-left-channelsin-bottom",
-      "source": "outgoing",
-      "sourceHandle": "out-left-1",
-      "target": "channels",
-      "targetHandle": "in-bottom-1",
-      "label": "APIs por conector",
-      "labelStyle": {
-        "fill": "#06b6d4",
-        "fontWeight": 600
-      },
-      "type": "smoothstep",
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed",
-        "color": "#06b6d4"
-      },
-      "style": {
-        "strokeWidth": 2.2,
-        "stroke": "#06b6d4"
       },
       "updatable": true
     },
@@ -1175,6 +1147,98 @@
       "style": {
         "strokeWidth": 2.2,
         "stroke": "#8b5cf6"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-channelsout-right-1-mailhookin-left-1",
+      "source": "channels",
+      "sourceHandle": "out-right-1",
+      "target": "mailhook",
+      "targetHandle": "in-left-1",
+      "label": "HTTP (webhook)",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-channelsout-right-2-hookin-left-1",
+      "source": "channels",
+      "sourceHandle": "out-right-2",
+      "target": "hook",
+      "targetHandle": "in-left-1",
+      "label": "HTTP (webhooks)",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-outgoingout-left-1-channelsin-bottom-2",
+      "source": "outgoing",
+      "sourceHandle": "out-left-1",
+      "target": "channels",
+      "targetHandle": "in-bottom-2",
+      "label": "APIs por conector",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
+      },
+      "updatable": true
+    },
+    {
+      "id": "reactflow__edge-mailoutout-left-2-channelsin-bottom-1",
+      "source": "mailout",
+      "sourceHandle": "out-left-2",
+      "target": "channels",
+      "targetHandle": "in-bottom-1",
+      "label": "HTTP",
+      "labelStyle": {
+        "fill": "#06b6d4",
+        "fontWeight": 600
+      },
+      "type": "smoothstep",
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#06b6d4"
+      },
+      "style": {
+        "strokeWidth": 2.2,
+        "stroke": "#06b6d4"
       },
       "updatable": true
     }
